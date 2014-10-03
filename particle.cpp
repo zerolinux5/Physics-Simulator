@@ -14,6 +14,7 @@ class Particle{
 	int getMass(){return mass;}
 	int getxVel(){return xVel;}
 	int getyVel(){return yVel;}
+	void move();
 };
 
 Particle::Particle(int x, int y){
@@ -23,4 +24,9 @@ Particle::Particle(int x, int y){
 	mass = (rand() % 10 + 1);
 	xVel = (rand() % 5 + 1);
 	yVel = (rand() % 5 + 1);
+}
+
+void Particle::move(){
+	xPos += xVel;
+	yPos += yVel;
 }
