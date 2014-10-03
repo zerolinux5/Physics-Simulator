@@ -14,6 +14,7 @@ class Particle{
 	int getMass(){return mass;}
 	int getxVel(){return xVel;}
 	int getyVel(){return yVel;}
+	void bounce(int, int);
 	void move();
 };
 
@@ -29,4 +30,9 @@ Particle::Particle(int x, int y){
 void Particle::move(){
 	xPos += xVel;
 	yPos += yVel;
+}
+
+void Particle::bounce(int newX, int newY){
+	xVel += newX;
+	yVel += newY;
 }
