@@ -1,6 +1,3 @@
-#include <stdlib.h>
-#include <time.h>
-
 class Particle{
 	int xPos;
 	int yPos;
@@ -8,7 +5,7 @@ class Particle{
 	int xVel;
 	int yVel;
    public:
-	Particle(int, int);
+	Particle(int, int, int, int, int);
 	int getxPos(){return xPos;}
 	int getyPos(){return yPos;}
 	int getMass(){return mass;}
@@ -18,13 +15,13 @@ class Particle{
 	void move();
 };
 
-Particle::Particle(int x, int y){
+Particle::Particle(int x, int y, int newMass, int newXVel, int newYVel){
 	srand(time(NULL));
 	xPos = x;
 	yPos = y;
-	mass = (rand() % 10 + 1);
-	xVel = (rand() % 5 + 1);
-	yVel = (rand() % 5 + 1);
+	mass = newMass;
+	xVel = newXVel;
+	yVel = newYVel;
 }
 
 void Particle::move(){
