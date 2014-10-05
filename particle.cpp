@@ -16,7 +16,6 @@ class Particle{
 };
 
 Particle::Particle(int x, int y, int newMass, int newXVel, int newYVel){
-	srand(time(NULL));
 	xPos = x;
 	yPos = y;
 	mass = newMass;
