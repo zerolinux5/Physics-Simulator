@@ -2,4 +2,3 @@ This is a physics simulator to test momentum, personal form of
 collision detection and classes.
 
 Need to fix:
-make global random seed generator as each is same since same computation time.
