@@ -29,6 +29,6 @@ void Particle::move(){
 }
 
 void Particle::bounce(int newX, int newY){
-	xVel += newX;
-	yVel += newY;
+	xVel = newX;
+	yVel = newY;
 }
