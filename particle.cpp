@@ -1,3 +1,5 @@
+#include <math.h>
+
 class Particle{
 	int xPos;
 	int yPos;
@@ -24,8 +26,10 @@ Particle::Particle(int x, int y, int newMass, int newXVel, int newYVel){
 }
 
 void Particle::move(){
-	xPos += xVel;
-	yPos += yVel;
+	int xFriction = fmax(0,(xVel - (mass * 0.05)));
+	int yFriction = fmax(0,(yVel - (mass * 0.05)));
+	xPos += xFriction;
+	yPos += yFriction;
 }
 
 void Particle::bounce(int newX, int newY){
