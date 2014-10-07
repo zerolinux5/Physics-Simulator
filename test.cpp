@@ -6,6 +6,7 @@
 using namespace std;
 
 void collision(Particle &p1, Particle &p2){
+	//Need to make this smaller
 	int x1Bounce = p1.getxVel()*p1.getMass() - p2.getxVel()*p2.getMass();
 	int y1Bounce = p1.getyVel()*p1.getMass() - p2.getyVel()*p2.getMass();
 
@@ -18,6 +19,7 @@ void collision(Particle &p1, Particle &p2){
 
 int main()
 {
+	//Using random seed generator here to have the clock make different numbers
 	srand(time(NULL));
 	int mass1 = rand() % 10 + 1;
 	int mass2 = rand() % 10 + 1;
@@ -26,6 +28,8 @@ int main()
 	int xVel2 = rand() % 7 + 1;
 	int yVel2 = rand() % 7 + 1;
 
+
+	//This is debugging code and will change for final project
 	Particle p1(5, 6, mass1, xVel1, yVel1);
 	Particle p2(7, 8, mass2, xVel2, yVel2);
 	cout << "Particle 1" << endl;
