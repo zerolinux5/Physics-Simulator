@@ -18,9 +18,13 @@ void collision(Particle &p1, Particle &p2){
 	p2.bounce(x2Bounce, y2Bounce);
 }
 
+//Bounce off of a wall
+void wallBounce(Particle &p1, int wallNum){
+
+}
+
 //Particle leaves test area
 void outOfBounds(Particle &p1){
-
 }
 
 //Method to run simulation
