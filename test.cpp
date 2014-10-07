@@ -20,11 +20,31 @@ void collision(Particle &p1, Particle &p2){
 
 //Bounce off of a wall
 void wallBounce(Particle &p1, int wallNum){
-
+	int xInverse = p1.getxVel() * -1;
+	int yInverse = p1.getyVel() * -1;
+	switch (wallNum){
+		case 1:
+		case 2:
+			p1.bounce(xInverse, p1.getyVel());
+			break;
+		case 3:
+		case 4:
+			p1.bounce(p1.getxVel(), yInverse);
+			break;
+	}
 }
 
 //Particle leaves test area
 void outOfBounds(Particle &p1){
+	if(p1.getxPos() < 0){
+		wallBounce(p1,1);
+	} else if (p1.getxPos() > 50){
+		wallBounce(p1,2);
+	} else if (p1.getyPos() < 0 ){
+		wallBounce(p1,3);
+	} else if (p1.getyPos() > 50){
+		wallBounce(p1,4);
+	}
 }
 
 //Method to run simulation
