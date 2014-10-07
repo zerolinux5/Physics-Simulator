@@ -5,6 +5,7 @@
 
 using namespace std;
 
+//Two particles collide
 void collision(Particle &p1, Particle &p2){
 	//Need to make this smaller
 	int x1Bounce = p1.getxVel()*p1.getMass() - p2.getxVel()*p2.getMass();
@@ -15,6 +16,16 @@ void collision(Particle &p1, Particle &p2){
 
 	p1.bounce(x1Bounce, y1Bounce);
 	p2.bounce(x2Bounce, y2Bounce);
+}
+
+//Particle leaves test area
+void outOfBounds(Particle &p1){
+
+}
+
+//Method to run simulation
+void update(int numTimes){
+
 }
 
 int main()
