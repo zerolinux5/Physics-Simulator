@@ -26,21 +26,22 @@ Particle::Particle(int x, int y, int newMass, int newXVel, int newYVel){
 }
 
 void Particle::move(){
+	xPos += xVel;
+	yPos += yVel;
+	
 	//Need to make a more realistic modifier
 	if(xVel > 0){
 		xVel--;
+	} else if(xVel == 0) {
 	} else {
 		xVel++;
 	}
 	if (yVel > 0){
 		yVel--;
+	} else if(yVel == 0) {
 	} else {
 		yVel++;
 	}
-	
-	
-	xPos += xVel;
-	yPos += yVel;
 }
 
 void Particle::bounce(int newX, int newY){

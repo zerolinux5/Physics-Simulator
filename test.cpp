@@ -36,16 +36,16 @@ void wallBounce(Particle &p1, int wallNum){
 
 //Particle leaves test area
 int outOfBounds(Particle &p1){
-	if(p1.getxPos() < 0){
+	if(p1.getxPos() <= 0){
 		wallBounce(p1,1);
 		return 1;
-	} else if (p1.getxPos() > 50){
+	} else if (p1.getxPos() >= 30){
 		wallBounce(p1,2);
 		return 1;
-	} else if (p1.getyPos() < 0 ){
+	} else if (p1.getyPos() <= 0 ){
 		wallBounce(p1,3);
 		return 1;
-	} else if (p1.getyPos() > 50){
+	} else if (p1.getyPos() >= 30){
 		wallBounce(p1,4);
 		return 1;
 	}
@@ -86,17 +86,19 @@ int main()
 	cout << "X vel: " << p2.getxVel() << endl;
 	cout << "Y vel: " << p2.getyVel() << endl << endl;
 
-	for(int i = 0; i < 5;i++){
-		p1.move();
-		p2.move();
-		cout << "P1 X: " << p1.getxPos() << endl;
-		cout << "P1 Y: " << p1.getyPos() << endl;
-		cout << "P2 X: " << p2.getxPos() << endl;
-		cout << "P2 Y: " << p2.getyPos() << endl << endl;
+	for(int i = 0; i < 10;i++){
+		cout << "P1 X: " << p1.getxPos() << "     P1 Y: " << p1.getyPos() << endl;
+		cout << "P2 X: " << p2.getxPos() << "     P2 Y: " << p2.getyPos() << endl << endl;
 
 		if(outOfBounds(p1)){
-
+			cout << "P1 Bounced" << endl << endl;
 		}
+		if (outOfBounds(p2)){
+			cout << "P2 Bounced" << endl << endl;
+		}
+
+		p1.move();
+		p2.move();
 
 /*		collision(p1,p2);
 		cout << "P1 X: " << p1.getxVel() << endl;
