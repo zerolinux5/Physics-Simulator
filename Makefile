@@ -7,3 +7,6 @@ test.o: test.cpp
 
 clean:
 	rm test *.o
+
+spotless:
+	rm test *.o *.txt
