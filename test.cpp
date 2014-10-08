@@ -46,8 +46,8 @@ int main()
 	cout << "Y vel: " << p1.getyVel() << "     Y vel: " << p2.getyVel() << endl << endl;
 
 	for(int i = 0; i < 10;i++){
-		cout << "P1 X: " << p1.getxPos() << "     P1 Y: " << p1.getyPos() << endl;
-		cout << "P2 X: " << p2.getxPos() << "     P2 Y: " << p2.getyPos() << endl << endl;
+		cout << "P1 X: " << p1.getxPos() << "     P2 X: " << p2.getxPos() << endl;
+		cout << "P1 Y: " << p1.getyPos() << "     P2 Y: " << p2.getyPos() << endl << endl;
 
 		p1.move();
 		p2.move();
