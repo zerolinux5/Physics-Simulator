@@ -41,6 +41,18 @@ void Particle::move(){
 		xPos += xVel;
 	}
 
+	if(yPos + yVel > MAX){
+		int bounce = MAX - (yPos + yVel);
+		yPos = (MAX + bounce);
+		yVel *= -1;
+	} else if(yPos + yVel < 0){
+		int bounce = yPos + yVel;
+		yPos = (bounce * -1);
+		yVel *= -1;
+	} else {
+		yPos += yVel;
+	}
+
 	//Need to make a more realistic modifier
 	if(xVel > 0){
 		xVel--;
