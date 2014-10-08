@@ -27,27 +27,33 @@ int main()
 {
 	//Using random seed generator here to have the clock make different numbers
 	srand(time(NULL));
+
+	//variable generation
 	int mass1 = rand() % 10 + 1;
 	int mass2 = rand() % 10 + 1;
+	int mass3 = rand() % 10 + 1;
 	int xVel1 = rand() % 10 + 1;
 	int yVel1 = rand() % 10 + 1;
 	int xVel2 = rand() % 10 + 1;
 	int yVel2 = rand() % 10 + 1;
+	int xVel3 = rand() % 10 + 1;
+	int yVel3 = rand() % 10 + 1;
 
 
 	//This is debugging code and will change for final project
 	Particle p1(5, 6, mass1, xVel1, yVel1);
 	Particle p2(7, 8, mass2, xVel2, yVel2);
-	cout << "Particle 1" << "     Particle 2" << endl;
-	cout << "X: " << p1.getxPos() << "          X: " << p2.getxPos() << endl;	
-	cout << "Y: " << p1.getyPos() << "          Y: " << p2.getyPos() << endl;
-	cout << "Mass: " << p1.getMass() << "     Mass: " << p2.getMass() << endl;
-	cout << "X vel: " << p1.getxVel() << "     X vel: " << p2.getxVel() << endl;
-	cout << "Y vel: " << p1.getyVel() << "     Y vel: " << p2.getyVel() << endl << endl;
+	Particle p3(9, 10, mass3, xVel3, yVel3);
+	cout << "Particle 1" << "     Particle 2" << "     Particle 3" << endl;
+	cout << "X: " << p1.getxPos() << "          X: " << p2.getxPos() << "          X: " << p3.getxPos() << endl;		
+	cout << "Y: " << p1.getyPos() << "          Y: " << p2.getyPos() << "          Y: " << p3.getxPos() << endl;	
+	cout << "Mass: " << p1.getMass() << "     Mass: " << p2.getMass() << "     Mass: " << p3.getMass() << endl;
+	cout << "X vel: " << p1.getxVel() << "     X vel: " << p2.getxVel() << "     X vel: " << p3.getxVel() << endl;
+	cout << "Y vel: " << p1.getyVel() << "     Y vel: " << p2.getyVel() << "     Y vel: " << p3.getyVel() << endl << endl;
 
 	for(int i = 0; i < 10;i++){
-		cout << "P1 X: " << p1.getxPos() << "     P2 X: " << p2.getxPos() << endl;
-		cout << "P1 Y: " << p1.getyPos() << "     P2 Y: " << p2.getyPos() << endl << endl;
+		cout << "P1 X: " << p1.getxPos() << "     P2 X: " << p2.getxPos() << "     P3 X: " << p3.getxPos() << endl;
+		cout << "P1 Y: " << p1.getyPos() << "     P2 Y: " << p2.getyPos() << "     P3 Y: " << p3.getyPos() << endl << endl;
 
 		p1.move();
 		p2.move();
