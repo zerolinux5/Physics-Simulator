@@ -38,12 +38,12 @@ int main()
 	int mass1 = rand() % 10 + 1;
 	int mass2 = rand() % 10 + 1;
 	int mass3 = rand() % 10 + 1;
-	int xVel1 = rand() % 10 + 1;
-	int yVel1 = rand() % 10 + 1;
-	int xVel2 = rand() % 10 + 1;
-	int yVel2 = rand() % 10 + 1;
-	int xVel3 = rand() % 10 + 1;
-	int yVel3 = rand() % 10 + 1;
+	int xVel1 = rand() % 30 + 5;
+	int yVel1 = rand() % 30 + 5;
+	int xVel2 = rand() % 30 + 5;
+	int yVel2 = rand() % 30 + 5;
+	int xVel3 = rand() % 30 + 5;
+	int yVel3 = rand() % 30 + 5;
 
 
 	//This is debugging code and will change for final project
@@ -57,19 +57,16 @@ int main()
 	cout << "X vel: " << p1.getxVel() << "     X vel: " << p2.getxVel() << "     X vel: " << p3.getxVel() << endl;
 	cout << "Y vel: " << p1.getyVel() << "     Y vel: " << p2.getyVel() << "     Y vel: " << p3.getyVel() << endl << endl;
 
-	for(int i = 0; i < 10;i++){
+	for(int i = 0; i < 100;i++){
 		cout << "P1 X: " << p1.getxPos() << "     P2 X: " << p2.getxPos() << "     P3 X: " << p3.getxPos() << endl;
 		cout << "P1 Y: " << p1.getyPos() << "     P2 Y: " << p2.getyPos() << "     P3 Y: " << p3.getyPos() << endl << endl;
 
 		p1.move();
 		p2.move();
-
-/*		collision(p1,p2);
-		cout << "P1 X: " << p1.getxVel() << endl;
-		cout << "P1 Y: " << p1.getyVel() << endl;
-		cout << "P2 X: " << p2.getxVel() << endl;
-		cout << "P2 Y: " << p2.getyVel() << endl << endl;*/
+		p3.move();
 	}
+
+	cout << "P1 collision count:" << p1.getCrashCount() << "     P2 collision count:" << p2.getCrashCount() << "     P3 collision count:" << p3.getCrashCount() << "     " << endl;
 
 	return 0;
 }
