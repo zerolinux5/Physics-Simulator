@@ -35,16 +35,21 @@ void wallBounce(Particle &p1, int wallNum){
 }
 
 //Particle leaves test area
-void outOfBounds(Particle &p1){
+int outOfBounds(Particle &p1){
 	if(p1.getxPos() < 0){
 		wallBounce(p1,1);
+		return 1;
 	} else if (p1.getxPos() > 50){
 		wallBounce(p1,2);
+		return 1;
 	} else if (p1.getyPos() < 0 ){
 		wallBounce(p1,3);
+		return 1;
 	} else if (p1.getyPos() > 50){
 		wallBounce(p1,4);
+		return 1;
 	}
+	return 0;
 }
 
 //Method to run simulation
@@ -58,10 +63,10 @@ int main()
 	srand(time(NULL));
 	int mass1 = rand() % 10 + 1;
 	int mass2 = rand() % 10 + 1;
-	int xVel1 = rand() % 7 + 1;
-	int yVel1 = rand() % 7 + 1;
-	int xVel2 = rand() % 7 + 1;
-	int yVel2 = rand() % 7 + 1;
+	int xVel1 = rand() % 10 + 1;
+	int yVel1 = rand() % 10 + 1;
+	int xVel2 = rand() % 10 + 1;
+	int yVel2 = rand() % 10 + 1;
 
 
 	//This is debugging code and will change for final project
@@ -84,16 +89,20 @@ int main()
 	for(int i = 0; i < 5;i++){
 		p1.move();
 		p2.move();
-		cout << "Before collision P1 X: " << p1.getxVel() << endl;
-		cout << "Before collision P1 Y: " << p1.getyVel() << endl;
-		cout << "Before collision P2 X: " << p2.getxVel() << endl;
-		cout << "Before collision P2 Y: " << p2.getyVel() << endl << endl;
+		cout << "P1 X: " << p1.getxPos() << endl;
+		cout << "P1 Y: " << p1.getyPos() << endl;
+		cout << "P2 X: " << p2.getxPos() << endl;
+		cout << "P2 Y: " << p2.getyPos() << endl << endl;
 
-		collision(p1,p2);
+		if(outOfBounds(p1)){
+
+		}
+
+/*		collision(p1,p2);
 		cout << "P1 X: " << p1.getxVel() << endl;
 		cout << "P1 Y: " << p1.getyVel() << endl;
 		cout << "P2 X: " << p2.getxVel() << endl;
-		cout << "P2 Y: " << p2.getyVel() << endl << endl;
+		cout << "P2 Y: " << p2.getyVel() << endl << endl;*/
 	}
 
 	return 0;

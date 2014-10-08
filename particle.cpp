@@ -27,10 +27,20 @@ Particle::Particle(int x, int y, int newMass, int newXVel, int newYVel){
 
 void Particle::move(){
 	//Need to make a more realistic modifier
-	int xFriction = fmax(0,(xVel - (mass * 0.05)));
-	int yFriction = fmax(0,(yVel - (mass * 0.05)));
-	xPos += xFriction;
-	yPos += yFriction;
+	if(xVel > 0){
+		xVel--;
+	} else {
+		xVel++;
+	}
+	if (yVel > 0){
+		yVel--;
+	} else {
+		yVel++;
+	}
+	
+	
+	xPos += xVel;
+	yPos += yVel;
 }
 
 void Particle::bounce(int newX, int newY){
