@@ -57,14 +57,16 @@ int main()
 
 	
 
+	for(int j = 0; j < 36; j++){
+		for(int i = 0; i < particleNum;i++){
+			Particle* particlePointer;
+			particlePointer = &particleVector.at(i);
+			myfile << "P" << (i+1) << " X: " << particlePointer->getxPos() << "     ";
+			myfile << "P" << (i+1) << " Y: " << particlePointer->getyPos() << endl;
 
-	for(int i = 0; i < particleNum;i++){
-		Particle* particlePointer;
-		particlePointer = &particleVector.at(i);
-		myfile << "P" << (i+1) << " X: " << particlePointer->getxPos() << "     ";
-		myfile << "P" << (i+1) << " Y: " << particlePointer->getyPos() << endl;
-
-		particlePointer->move();
+			particlePointer->move();
+		}
+		myfile << endl;
 	}
 
 	//myfile << "P1 collision count:" << p1.getCrashCount();
