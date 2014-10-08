@@ -29,6 +29,12 @@ int main()
 	srand(time(NULL));
 
 	//variable generation
+	int posx1 = rand() % 31;
+	int posx2 = rand() % 31;
+	int posx3 = rand() % 31;
+	int posy1 = rand() % 31;
+	int posy2 = rand() % 31;
+	int posy3 = rand() % 31;
 	int mass1 = rand() % 10 + 1;
 	int mass2 = rand() % 10 + 1;
 	int mass3 = rand() % 10 + 1;
@@ -41,9 +47,9 @@ int main()
 
 
 	//This is debugging code and will change for final project
-	Particle p1(5, 6, mass1, xVel1, yVel1);
-	Particle p2(7, 8, mass2, xVel2, yVel2);
-	Particle p3(9, 10, mass3, xVel3, yVel3);
+	Particle p1(posx1, posy1, mass1, xVel1, yVel1);
+	Particle p2(posx2, posy2, mass2, xVel2, yVel2);
+	Particle p3(posx2, posy3, mass3, xVel3, yVel3);
 	cout << "Particle 1" << "     Particle 2" << "     Particle 3" << endl;
 	cout << "X: " << p1.getxPos() << "          X: " << p2.getxPos() << "          X: " << p3.getxPos() << endl;		
 	cout << "Y: " << p1.getyPos() << "          Y: " << p2.getyPos() << "          Y: " << p3.getxPos() << endl;	
