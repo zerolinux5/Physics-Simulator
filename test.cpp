@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <fstream>
+#include <vector>
 
 using namespace std;
 
@@ -31,45 +32,42 @@ int main()
 	//Using random seed generator here to have the clock make different numbers
 	srand(time(NULL));
 
-	//variable generation
-	int posx1 = rand() % 31;
-	int posx2 = rand() % 31;
-	int posx3 = rand() % 31;
-	int posy1 = rand() % 31;
-	int posy2 = rand() % 31;
-	int posy3 = rand() % 31;
-	int mass1 = rand() % 10 + 1;
-	int mass2 = rand() % 10 + 1;
-	int mass3 = rand() % 10 + 1;
-	int xVel1 = rand() % 30 + 5;
-	int yVel1 = rand() % 30 + 5;
-	int xVel2 = rand() % 30 + 5;
-	int yVel2 = rand() % 30 + 5;
-	int xVel3 = rand() % 30 + 5;
-	int yVel3 = rand() % 30 + 5;
+	int particleNum;
+	cout << "Enter number of particles to use:" << endl;
+	cin >> particleNum;
+	vector<Particle> particleVector;
 
+	for(int i = 0; i < particleNum; i++){
+		int posx = rand() % 31;
+		int posy = rand() % 31;
+		int mass = rand() % 10 + 1;
+		int xVel = rand() % 30 + 5;
+		int yVel = rand() % 30 + 5;
+		Particle p1(posx, posy, mass, xVel, yVel);
+		particleVector.push_back(p1);
 
-	//This is debugging code and will change for final project
-	Particle p1(posx1, posy1, mass1, xVel1, yVel1);
-	Particle p2(posx2, posy2, mass2, xVel2, yVel2);
-	Particle p3(posx2, posy3, mass3, xVel3, yVel3);
-	cout << "Particle 1" << "     Particle 2" << "     Particle 3" << endl;
-	cout << "X: " << p1.getxPos() << "          X: " << p2.getxPos() << "          X: " << p3.getxPos() << endl;		
-	cout << "Y: " << p1.getyPos() << "          Y: " << p2.getyPos() << "          Y: " << p3.getxPos() << endl;	
-	cout << "Mass: " << p1.getMass() << "     Mass: " << p2.getMass() << "     Mass: " << p3.getMass() << endl;
-	cout << "X vel: " << p1.getxVel() << "     X vel: " << p2.getxVel() << "     X vel: " << p3.getxVel() << endl;
-	cout << "Y vel: " << p1.getyVel() << "     Y vel: " << p2.getyVel() << "     Y vel: " << p3.getyVel() << endl << endl;
-
-	for(int i = 0; i < 35;i++){
-		myfile << "P1 X: " << p1.getxPos() << "     P2 X: " << p2.getxPos() << "     P3 X: " << p3.getxPos() << endl;
-		myfile << "P1 Y: " << p1.getyPos() << "     P2 Y: " << p2.getyPos() << "     P3 Y: " << p3.getyPos() << endl << endl;
-
-		p1.move();
-		p2.move();
-		p3.move();
+		//Show Particle information
+		cout << "Particle " << (i+1) << endl;
+		cout << "X: " << p1.getxPos() << endl;
+		cout << "Y: " << p1.getyPos() << endl;
+		cout << "Mass: " << p1.getMass() << endl;
+		cout << "X Velocity: " << p1.getxVel() << endl;
+		cout << "Y Velocity: " << p1.getyVel() << endl << endl;
 	}
 
-	myfile << "P1 collision count:" << p1.getCrashCount() << "     P2 collision count:" << p2.getCrashCount() << "     P3 collision count:" << p3.getCrashCount() << "     " << endl;
+	
+
+
+	for(int i = 0; i < particleNum;i++){
+		Particle* particlePointer;
+		particlePointer = &particleVector.at(i);
+		myfile << "P" << (i+1) << " X: " << particlePointer->getxPos() << "     ";
+		myfile << "P" << (i+1) << " Y: " << particlePointer->getyPos() << endl;
+
+		particlePointer->move();
+	}
+
+	//myfile << "P1 collision count:" << p1.getCrashCount();
 	myfile.close();
 	return 0;
 }
