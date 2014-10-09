@@ -25,7 +25,7 @@ void update(int numTimes){
 
 }
 
-int main()
+int main(int argc, char **argv)
 {
 	ofstream myfile;
 	myfile.open ("data.txt");
@@ -33,11 +33,17 @@ int main()
 	srand(time(NULL));
 
 	int particleNum;
-	cout << "Enter number of particles to use:" << endl;
-	cin >> particleNum;
+	if(argc > 1){
+		particleNum = atoi(argv[1]);
+	} else {
+		cout << "Enter number of particles to use:" << endl;
+		cin >> particleNum;
+	}
+
 	vector<Particle> particleVector;
 
 	for(int i = 0; i < particleNum; i++){
+		//Generate numbers and make a new particle
 		int posx = rand() % 31;
 		int posy = rand() % 31;
 		int mass = rand() % 10 + 1;
@@ -56,8 +62,9 @@ int main()
 	}
 
 	
-
+	//Number of times to execute movement
 	for(int j = 0; j < 36; j++){
+		//Display x and y position at each moment in time
 		for(int i = 0; i < particleNum;i++){
 			Particle* particlePointer;
 			particlePointer = &particleVector.at(i);
