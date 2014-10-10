@@ -21,7 +21,7 @@ struct Line{
 
 //Make a line from 2 points
 void lineMaker(Point pointA, Point pointB, Line &returnLine){
-	double slope = (pointB.y - pointA.y)/(pointB.x - pointA.x)*1.0;
+	double slope = 1.0*(pointB.y - pointA.y)/(pointB.x - pointA.x);
 	returnLine.slope = slope;
 	double yInt = 0.0 + pointA.y - slope*pointA.x;
 	returnLine.yIntercept = yInt;
@@ -94,7 +94,7 @@ int main(int argc, char **argv)
 	p2.x = 5;
 	p2.y = 5;
 
-	p3.x = 8;
+	p3.x = 2;
 	p3.y = 10;
 	p4.x = 5;
 	p4.y = 3;
@@ -104,8 +104,8 @@ int main(int argc, char **argv)
 	lineMaker(p1, p2, l1);
 	lineMaker(p3, p4, l2);
 
-	cout << "L1 " << l1.slope << " " << l1.yIntercept << " " << l1.first.x << " " <<l1.first.y << endl;
-	cout << "L2 " << l2.slope << " " << l2.yIntercept << " " << l2.first.x << " " <<l2.first.y << endl;
+	cout << "L1 " << l1.slope << " " << l1.yIntercept << " " << l1.first.x << " " << l1.first.y << " " << l1.second.x << " " << l1.second.y << endl;
+	cout << "L2 " << l2.slope << " " << l2.yIntercept << " " << l2.first.x << " " << l2.first.y << " " << l2.second.x << " " << l2.second.y << endl;
 
 	cout << lineCollision(l1, l2) << endl;
 
