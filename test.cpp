@@ -7,6 +7,23 @@
 
 using namespace std;
 
+struct Point{
+	int x;
+	int y;
+};
+
+struct Line{
+	int slope;
+	int yIntercept;
+};
+
+void lineMaker(Point pointA, Point pointB, Line &returnLine){
+	int slope = (pointB.y - pointA.y)/(pointB.x - pointA.x);
+	returnLine.slope = slope;
+	int yInt = pointA.y - slope*pointA.x;
+	returnLine.yIntercept = yInt;
+}
+
 //Two particles collide
 void collision(Particle &p1, Particle &p2){
 	//Need to make this smaller
