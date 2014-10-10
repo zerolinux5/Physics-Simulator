@@ -42,7 +42,29 @@ int lineCollision(Line lineA, Line lineB){
 	int newIntercept = lineB.yIntercept - lineA.yIntercept;
 	int newSlope = lineA.slope - lineB.slope;
 	int x = newIntercept/newSlope;
-	int y = (lineA.slope*x + lineA.yIntercept);
+
+	//Check to see if x matters
+	int passFlag = 0;
+	if((x > lineA.first.x && x < lineA.first.x) || (x < lineA.first.x && x > lineA.first.x)){
+		if((x > lineB.first.x && x < lineB.first.x) || (x < lineB.first.x && x > lineB.first.x)){
+			passFlag = 1;
+		}
+	}
+	if(passFlag){
+		passFlag = 0;
+		int y = (lineA.slope*x + lineA.yIntercept);
+		if((y > lineA.first.y && y < lineA.first.y) || (y < lineA.first.y && y > lineA.first.y)){
+			if((y > lineB.first.y && y < lineB.first.y) || (y < lineB.first.y && y > lineB.first.y)){
+				passFlag = 1;
+			}
+		}
+	}
+
+	if(passFlag){
+		return 1;
+	} else {
+		return 0;
+	}
 }
 
 //Two particles collide
