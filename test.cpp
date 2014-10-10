@@ -15,13 +15,34 @@ struct Point{
 struct Line{
 	int slope;
 	int yIntercept;
+	Point first;
+	Point second;
 };
 
+//Make a line from 2 points
 void lineMaker(Point pointA, Point pointB, Line &returnLine){
 	int slope = (pointB.y - pointA.y)/(pointB.x - pointA.x);
 	returnLine.slope = slope;
 	int yInt = pointA.y - slope*pointA.x;
 	returnLine.yIntercept = yInt;
+
+	//Keeping the points since it'll be a line segment
+	returnLine.first = pointA;
+	returnLine.second = pointB;
+}
+
+//Check to see if 2 lines collide, 1 for yes 0 for no
+int lineCollision(Line lineA, Line lineB){
+	//Test to see if they are parallel
+	if(lineA.slope == lineB.slope){
+		return 0;
+	}
+	//Find x value from slopes and intercepts, then y value from
+	//derived x value
+	int newIntercept = lineB.yIntercept - lineA.yIntercept;
+	int newSlope = lineA.slope - lineB.slope;
+	int x = newIntercept/newSlope;
+	int y = (lineA.slope*x + lineA.yIntercept);
 }
 
 //Two particles collide
