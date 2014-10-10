@@ -13,17 +13,17 @@ struct Point{
 };
 
 struct Line{
-	int slope;
-	int yIntercept;
+	double slope;
+	double yIntercept;
 	Point first;
 	Point second;
 };
 
 //Make a line from 2 points
 void lineMaker(Point pointA, Point pointB, Line &returnLine){
-	int slope = (pointB.y - pointA.y)/(pointB.x - pointA.x);
+	double slope = (pointB.y - pointA.y)/(pointB.x - pointA.x)*1.0;
 	returnLine.slope = slope;
-	int yInt = pointA.y - slope*pointA.x;
+	double yInt = 0.0 + pointA.y - slope*pointA.x;
 	returnLine.yIntercept = yInt;
 
 	//Keeping the points since it'll be a line segment
@@ -39,22 +39,22 @@ int lineCollision(Line lineA, Line lineB){
 	}
 	//Find x value from slopes and intercepts, then y value from
 	//derived x value
-	int newIntercept = lineB.yIntercept - lineA.yIntercept;
-	int newSlope = lineA.slope - lineB.slope;
-	int x = newIntercept/newSlope;
+	double newIntercept = lineB.yIntercept - lineA.yIntercept;
+	double newSlope = lineA.slope - lineB.slope;
+	double x = newIntercept/newSlope;
 
 	//Check to see if x matters
 	int passFlag = 0;
-	if((x > lineA.first.x && x < lineA.first.x) || (x < lineA.first.x && x > lineA.first.x)){
-		if((x > lineB.first.x && x < lineB.first.x) || (x < lineB.first.x && x > lineB.first.x)){
+	if((x >= lineA.first.x && x <= lineA.second.x) || (x <= lineA.first.x && x >= lineA.second.x)){
+		if((x >= lineB.first.x && x <= lineB.second.x) || (x <= lineB.first.x && x >= lineB.second.x)){
 			passFlag = 1;
 		}
 	}
 	if(passFlag){
 		passFlag = 0;
 		int y = (lineA.slope*x + lineA.yIntercept);
-		if((y > lineA.first.y && y < lineA.first.y) || (y < lineA.first.y && y > lineA.first.y)){
-			if((y > lineB.first.y && y < lineB.first.y) || (y < lineB.first.y && y > lineB.first.y)){
+		if((y >= lineA.first.y && y <= lineA.second.y) || (y <= lineA.first.y && y >= lineA.second.y)){
+			if((y >= lineB.first.y && y <= lineB.second.y) || (y <= lineB.first.y && y >= lineB.second.y)){
 				passFlag = 1;
 			}
 		}
@@ -87,6 +87,29 @@ void update(int numTimes){
 
 int main(int argc, char **argv)
 {
+	Point p1, p2, p3, p4;
+
+	p1.x = 3;
+	p1.y = 3;
+	p2.x = 5;
+	p2.y = 5;
+
+	p3.x = 8;
+	p3.y = 10;
+	p4.x = 5;
+	p4.y = 3;
+
+	Line l1, l2;
+
+	lineMaker(p1, p2, l1);
+	lineMaker(p3, p4, l2);
+
+	cout << "L1 " << l1.slope << " " << l1.yIntercept << " " << l1.first.x << " " <<l1.first.y << endl;
+	cout << "L2 " << l2.slope << " " << l2.yIntercept << " " << l2.first.x << " " <<l2.first.y << endl;
+
+	cout << lineCollision(l1, l2) << endl;
+
+	/*
 	ofstream myfile;
 	myfile.open ("data.txt");
 	//Using random seed generator here to have the clock make different numbers
@@ -138,5 +161,6 @@ int main(int argc, char **argv)
 
 	//myfile << "P1 collision count:" << p1.getCrashCount();
 	myfile.close();
+	*/
 	return 0;
 }
