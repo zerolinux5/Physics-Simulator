@@ -87,6 +87,7 @@ void update(int numTimes){
 
 int main(int argc, char **argv)
 {
+/*	Debug test for line collision
 	Point p1, p2, p3, p4;
 
 	p1.x = 3;
@@ -107,9 +108,9 @@ int main(int argc, char **argv)
 	cout << "L1 " << l1.slope << " " << l1.yIntercept << " " << l1.first.x << " " << l1.first.y << " " << l1.second.x << " " << l1.second.y << endl;
 	cout << "L2 " << l2.slope << " " << l2.yIntercept << " " << l2.first.x << " " << l2.first.y << " " << l2.second.x << " " << l2.second.y << endl;
 
-	cout << lineCollision(l1, l2) << endl;
+	cout << lineCollision(l1, l2) << endl;*/
 
-	/*
+	
 	ofstream myfile;
 	myfile.open ("data.txt");
 	//Using random seed generator here to have the clock make different numbers
@@ -145,6 +146,9 @@ int main(int argc, char **argv)
 	}
 
 	
+	vector<Point> before;
+	vector<Point> after;
+	vector<Line> lineSegments;
 	//Number of times to execute movement
 	for(int j = 0; j < 36; j++){
 		//Display x and y position at each moment in time
@@ -154,13 +158,40 @@ int main(int argc, char **argv)
 			myfile << "P" << (i+1) << " X: " << particlePointer->getxPos() << "     ";
 			myfile << "P" << (i+1) << " Y: " << particlePointer->getyPos() << endl;
 
+			//Make a point from before move
+			Point old;
+			old.x = particlePointer->getxPos();
+			old.y = particlePointer->getyPos();
+			before.push_back(old);
+
+			//Move particle
 			particlePointer->move();
+
+			//Make a point for after
+			Point newPoint;
+			newPoint.x = particlePointer->getxPos();
+			newPoint.y = particlePointer->getyPos();
+			after.push_back(newPoint);
 		}
+
+		//make the lines and set them into vector
+		for(int i = 0; i < particleNum; i++){
+			Point* pointOld;
+			Point* pointNew;
+			pointOld = &before.at(i);
+			pointNew = &after.at(i);
+
+			Line particleLine;
+			lineMaker(*pointOld, *pointNew, particleLine);
+			lineSegments.push_back(particleLine);
+		}
+
+		//Newline to show different rounds
 		myfile << endl;
 	}
 
 	//myfile << "P1 collision count:" << p1.getCrashCount();
 	myfile.close();
-	*/
+	
 	return 0;
 }
