@@ -186,6 +186,11 @@ int main(int argc, char **argv)
 			lineSegments.push_back(particleLine);
 		}
 
+		//compare each line to eachother to see if collision
+		for(in i = 0; i < particleNum; i++){
+
+		}
+
 		//Newline to show different rounds
 		myfile << endl;
 	}

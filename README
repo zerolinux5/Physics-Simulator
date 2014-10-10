@@ -5,5 +5,4 @@ Need to fix:
 
 
 Need to do:
-collision detection, add friction
-
+Need to make logic to compare all particles at same time
