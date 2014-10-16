@@ -80,10 +80,6 @@ void collision(Particle &p1, Particle &p2){
 	p2.bounce(x2Bounce, y2Bounce);
 }
 
-//Method to run simulation
-void update(int numTimes){
-
-}
 
 int main(int argc, char **argv)
 {
@@ -111,6 +107,8 @@ int main(int argc, char **argv)
 	cout << lineCollision(l1, l2) << endl;*/
 
 	
+	//Start of final code
+	int collisionCount = 0;
 	ofstream myfile;
 	myfile.open ("data.txt");
 	//Using random seed generator here to have the clock make different numbers
@@ -190,7 +188,7 @@ int main(int argc, char **argv)
 		for(int i = 0; i < (particleNum - 1); i++){
 			for(int l = i+1; l < particleNum; l++){
 				if (lineCollision(lineSegments.at(i), lineSegments.at(l))){
-					cout << "Hit" << endl;
+					collisionCount++;
 				}
 			}
 		}
@@ -200,6 +198,7 @@ int main(int argc, char **argv)
 	}
 
 	//myfile << "P1 collision count:" << p1.getCrashCount();
+	cout << "Number of collisions between particles:" << collisionCount << endl;
 	myfile.close();
 	
 	return 0;
